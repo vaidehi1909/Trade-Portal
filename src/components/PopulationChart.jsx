@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "@ant-design/charts";
+import { Card, Col, Row } from "antd";
+import PriceCardList from "./PriceCardList";
 
 const datURL =
   "https://datausa.io/api/data?drilldowns=Nation&measures=Population";
@@ -50,6 +52,48 @@ const PopulationChart = () => {
     );
   }
 
-  return <Line {...props} />;
+  return (
+    <>
+      <Row
+        gutter={10}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "20px",
+        }}>
+        <Col
+          xs={{ span: 24 }}
+          sm={{ span: 24 }}
+          md={{ span: 24 }}
+          lg={{ span: 15 }}
+          xl={{ span: 15 }}
+          style={{ textAlign: "center", padding: "20px" }}>
+          <Card
+            title="Population Chart"
+            style={{ boxShadow: "1px 4px 8px rgba(0,0,0,0.1)" }}>
+            <Line {...props} />
+          </Card>
+        </Col>
+        <Col
+          xs={{ span: 24 }}
+          sm={{ span: 24 }}
+          md={{ span: 24 }}
+          lg={{ span: 8 }}
+          xl={{ span: 8 }}
+          style={{
+            padding: "20px",
+            textAlign: "center",
+            justifyContent: "center",
+            justifyItems: "center",
+          }}>
+          <Card
+            title="Bitcoin Prices"
+            style={{ boxShadow: "1px 4px 8px rgba(0,0,0,0.1)" }}>
+            <PriceCardList grid={false} />
+          </Card>
+        </Col>
+      </Row>
+    </>
+  );
 };
 export default PopulationChart;
