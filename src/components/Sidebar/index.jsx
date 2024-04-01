@@ -8,6 +8,7 @@ import {
   MenuFoldOutlined,
 } from "@ant-design/icons";
 import { NavLink, useLocation } from "react-router-dom";
+import "./index.css";
 
 const { Sider } = Layout;
 
@@ -66,17 +67,13 @@ const SideBar = ({ width }) => {
             type="text"
             icon={
               collapsed ? (
-                <MenuUnfoldOutlined style={{ color: "white" }} />
-              ) : (
                 <MenuFoldOutlined style={{ color: "white" }} />
+              ) : (
+                <MenuUnfoldOutlined style={{ color: "white" }} />
               )
             }
             onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "26px",
-              width: 64,
-              height: 64,
-            }}
+            className="sidebar-font margin-left-20"
           />
         </Col>
       </Row>

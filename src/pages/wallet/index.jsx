@@ -1,15 +1,19 @@
 import React from "react";
 import { Layout } from "antd";
+
 import PageContent from "../../components/PageContent";
 import Header from "../../components/Header";
+import MetaMask from "../../components/MetaMask";
 
-const Home = () => {
+const Wallet = () => {
   return (
     <Layout>
       <Header>Wallet Details</Header>
-      <PageContent>Content</PageContent>
+      <PageContent>
+        <MetaMask />
+      </PageContent>
     </Layout>
   );
 };
 
-export default Home;
+export default Wallet;

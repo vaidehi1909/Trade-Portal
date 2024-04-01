@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Card, Skeleton, Button, Col, Row, Carousel } from "antd";
-const { Meta } = Card;
+import { Card, Button, Col, Row, Carousel } from "antd";
 
 const dataUrl = "https://api.coindesk.com/v1/bpi/currentprice.json";
 
@@ -13,27 +12,19 @@ const PriceCard = ({ loading, currency = {} }) => {
   return (
     <Card
       loading={loading}
-      className="module-border-wrap"
-      // id="scale-up-1"
+      className="module-border-wrap price-card "
       hoverable
-      style={{
-        margin: "10px",
-        padding: "10px",
-        boxShadow: "1px 4px 8px rgba(0,0,0,0.1)",
-      }}
       cover={
-        <div style={{ paddingBottom: "2px" }}>
-          <p style={{ fontSize: 32, margin: 0, fontWeight: 600 }}>
-            {!loading && currency?.code}
-          </p>
-          <p style={{ fontSize: 32, margin: 0, fontWeight: 600 }}>
+        <div className="padding-bottom">
+          <p className="price-font">{!loading && currency?.code}</p>
+          <p className="price-font price-ellipsis">
             {!loading &&
-              decodeHTMLEntities(currency?.symbol) + " " + currency?.rate_float}
+              decodeHTMLEntities(currency?.symbol) + " " + currency?.rate}
           </p>
         </div>
       }>
-      <div style={{ textAlign: "left" }}>
-        <p style={{ marginBottom: 4 }}>{currency?.description}</p>
+      <div className="text-left">
+        <p className="margin-bottom">{currency?.description}</p>
       </div>
     </Card>
   );
@@ -48,7 +39,6 @@ const PriceCardList = ({ grid = true }) => {
     fetch(dataUrl)
       .then((res) => res.json())
       .then((response) => {
-        console.log(response);
         setData(response);
         setError(null);
       })
@@ -82,17 +72,12 @@ const PriceCardList = ({ grid = true }) => {
   if (grid) {
     return (
       <>
-        <Row>
-          <Col
-            xs={{ span: 24 }}
-            sm={{ span: 24 }}
-            lg={{ span: 6 }}
-            xl={{ span: 6 }}
-            xxl={{ span: 6 }}>
-            {Object.keys(data.bpi).map((key) => (
+        <Row gutter={16} justify="center" className="text-center">
+          {Object.keys(data.bpi).map((key) => (
+            <Col xs={24} sm={24} lg={8} xl={8} xxl={8} className="text-center">
               <PriceCard key={key} currency={data.bpi[key]} />
-            ))}
-          </Col>
+            </Col>
+          ))}
         </Row>
       </>
     );

@@ -1,0 +1,13 @@
+.sidebar-font {
+  font-size: 26px;
+  width: 64px;
+  height: 64px;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.margin-left-20 {
+  margin-left: 20px;
+}

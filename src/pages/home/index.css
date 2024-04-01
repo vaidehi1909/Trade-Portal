@@ -1,0 +1,14 @@
+.chart-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.chart-col {
+  padding: 20px;
+  text-align: center;
+}
+
+.box-shadow {
+  box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.1);
+}
